@@ -1,2 +1,2 @@
 # commontrust-api
-API definitions for CommonTrust Network
+Documentation for CommonTrust Network APIs

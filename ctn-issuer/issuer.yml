@@ -1,0 +1,99 @@
+openapi: 3.0.0
+info:
+  title: ctn-issuer
+  description: CommonTrust Network Issuer API
+  version: 1.0.0
+  contact:
+    email: cloudops@thecommonsproject.org
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+
+servers:
+  - description: Development
+    url: https://ctn-api.tcpdev.org/ctn/ctn-issuer
+  - description: Test
+    url: https://ctn-api.tcptest.org/ctn/ctn-issuer
+  - description: Production
+    url: https://api.commontrustnetwork.org/ctn/ctn-issuer
+
+paths:
+  /issuer:
+    get:
+      summary: returns issuer
+      operationId: findIssuer
+      description: |
+        By passing in the Issuer URL, you can retrieve the Issuer object
+      parameters:
+        - in: query
+          name: identifier
+          description: issuer URL
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: system
+          description: smarthealthcard or other system
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Issuer object found
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Issuer'
+        '400':
+          description: Invalid parameters
+        '401':
+          $ref: "#/components/responses/UnauthorizedError"
+        '404':
+          description: Issuer not found
+        '429':
+          description: Gateway error
+        '500':
+          description: Server error
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: x-api-key
+      in: header
+  schemas:
+    Issuer:
+      type: object
+      required:
+        - id
+        - name
+        - url
+        - modifiedDate
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+        name:
+          type: string
+          example: Kenney Laboratories
+        url:
+          type: string
+          format: uri
+          example: https://kenneylabs.com/shc-issuer
+        modifiedDate:
+          type: string
+          format: date-time
+          example: '2016-08-29T09:12:33.001Z'
+  responses:
+    UnauthorizedError:
+      description: API key is missing or invalid
+      headers:
+        WWW_Authenticate:
+          schema:
+            type: string
+
+security:
+  - ApiKeyAuth: []

@@ -1,0 +1,111 @@
+openapi: 3.0.0
+info:
+  title: shc-verifier
+  description: Smart Health Card Verifier API
+  version: 1.0.0
+  contact:
+    email: cloudops@thecommonsproject.org
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+
+servers:
+  - description: Development
+    url: https://ctn-api.tcpdev.org/ctn/shc-verifier
+  - description: Test
+    url: https://ctn-api.tcptest.org/ctn/shc-verifier
+  - description: Production
+    url: https://api.commontrustnetwork.org/ctn/shc-verifier
+
+paths:
+  /verifier:
+    post:
+      summary: returns verification response
+      description: |
+        By passing in the Smart Health Card, you can receive a verification response
+      requestBody:
+        description: Smart Health Card
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SmartHealthCard'
+      responses:
+        '200':
+          description: Verification successful
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/ValidationResponse'
+        '400':
+          description: Invalid parameters
+        '401':
+          $ref: "#/components/responses/UnauthorizedError"
+        '429':
+          description: Gateway error
+        '500':
+          description: Server error
+        '502':
+          description: Public key not found or invalid
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: x-api-key
+      in: header
+  schemas:
+    SmartHealthCard:
+      type: object
+      required:
+        - iss
+        - nbf
+        - vc
+      properties:
+        iss:
+          type: string
+          format: uri
+          example: https://spec.smarthealth.cards/examples/issuer
+        nbf:
+          type: number
+          example: 1631290671.609
+        vc:
+          type: object
+    Issuer:
+      type: object
+      required:
+        - id
+        - name
+        - environment
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+        name:
+          type: string
+          example: Kenney Laboratories
+        environment:
+          type: string
+          example: NONPROD
+    ValidationResponse:
+      type: object
+      required:
+        - payload
+      properties:
+        payload:
+          $ref: '#/components/schemas/SmartHealthCard'
+        issuer:
+          $ref: '#/components/schemas/Issuer'
+  responses:
+    UnauthorizedError:
+      description: API key is missing or invalid
+      headers:
+        WWW_Authenticate:
+          schema:
+            type: string
+
+security:
+  - ApiKeyAuth: []
