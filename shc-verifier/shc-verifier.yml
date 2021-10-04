@@ -6,16 +6,16 @@ info:
   contact:
     email: cloudops@thecommonsproject.org
   license:
-    name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+    name: MIT
+    url: 'https://mit-license.org/'
 
 servers:
   - description: Development
-    url: https://ctn-api.tcpdev.org/ctn/shc-verifier
+    url: https://api-dev.commontrustnetwork.org/v1/shc-verifier
   - description: Test
-    url: https://ctn-api.tcptest.org/ctn/shc-verifier
+    url: https://api-test.commontrustnetwork.org/v1/shc-verifier
   - description: Production
-    url: https://api.commontrustnetwork.org/ctn/shc-verifier
+    url: https://api.commontrustnetwork.org/v1/shc-verifier
 
 paths:
   /verifier:

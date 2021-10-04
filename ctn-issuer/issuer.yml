@@ -6,16 +6,16 @@ info:
   contact:
     email: cloudops@thecommonsproject.org
   license:
-    name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+    name: MIT
+    url: 'https://mit-license.org/'
 
 servers:
   - description: Development
-    url: https://ctn-api.tcpdev.org/ctn/ctn-issuer
+    url: https://api-dev.commontrustnetwork.org/v1/ctn-issuer
   - description: Test
-    url: https://ctn-api.tcptest.org/ctn/ctn-issuer
+    url: https://api-test.commontrustnetwork.org/v1/ctn-issuer
   - description: Production
-    url: https://api.commontrustnetwork.org/ctn/ctn-issuer
+    url: https://api.commontrustnetwork.org/v1/ctn-issuer
 
 paths:
   /issuer:
