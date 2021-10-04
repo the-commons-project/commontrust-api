@@ -31,6 +31,7 @@ paths:
           required: true
           schema:
             type: string
+            example: https://spec.smarthealth.cards/examples/issuer
         - in: query
           name: system
           description: smarthealthcard or other system
