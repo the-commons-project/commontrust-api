@@ -37,25 +37,36 @@ paths:
           required: true
           schema:
             type: string
+            enum: [smarthealthcard]
       responses:
         '200':
           description: Issuer object found
           content:
             application/json:
               schema:
-                type: object
-                items:
-                  $ref: '#/components/schemas/Issuer'
+                $ref: '#/components/schemas/Issuer'
         '400':
           description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           $ref: "#/components/responses/UnauthorizedError"
         '404':
           description: Issuer not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '429':
           description: Gateway error
         '500':
           description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 
 components:
   securitySchemes:
@@ -69,8 +80,7 @@ components:
       required:
         - id
         - name
-        - url
-        - modifiedDate
+        - environment
       properties:
         id:
           type: string
@@ -79,14 +89,21 @@ components:
         name:
           type: string
           example: Kenney Laboratories
-        url:
+        logo_uri:
           type: string
           format: uri
-          example: https://kenneylabs.com/shc-issuer
-        modifiedDate:
+          example: https://kenneylabs.com/logo.png
+        environment:
           type: string
-          format: date-time
-          example: '2016-08-29T09:12:33.001Z'
+          enum: [PROD, NONPROD]
+          example: PROD
+    Error:
+      type: object
+      properties:
+        error_message:
+          type: string
+      required:
+        - error_message
   responses:
     UnauthorizedError:
       description: API key is missing or invalid
