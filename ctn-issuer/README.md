@@ -1,5 +1,5 @@
-# CommonTrust Network Issuer Lookup API
-The CommonTrust Network Issuer Lookup API allows clients to query the CommonTrust Network Directory for information about the issuer of a SMART Health Card. Clients would first discover the `iss` value of the issuer of a SMART Health Card. Then, the client would make a `GET` request to the `v1/ctn-issuer` endpoint, specifying the `iss` value as the `identifier` query parameter and `smarthealthcard` as the `system` query parameter. Clients will need to include their API Key in the `x-api-key` header as part of the request.
+# CommonTrust Network Issuer API
+The CommonTrust Network Issuer API allows clients to query the CommonTrust Network Registry for information about the issuer of a SMART Health Card. Clients would first discover the `iss` value of the issuer of a SMART Health Card. Then, the client would make a `GET` request to the `v1/ctn-issuer` endpoint, specifying the `iss` value as the `identifier` query parameter and `smarthealthcard` as the `system` query parameter. Clients will need to include their API Key in the `x-api-key` header as part of the request.
 
 ## Sample Request and Response
 Request:
