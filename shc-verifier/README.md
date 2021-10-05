@@ -1,9 +1,13 @@
 # SMART Health Card Verifier
 The SMART Health Card Verifier API allows clients provides clients an interface to perform validation on a SMART Health Card, ensuring that the SMART Health Card has not been tampered with. If the SMART Health Card passes validation, the payload of the SMART Health Card will be returned to the client. Additionally, if the issuer of the SMART Health Card is registered in the CommonTrust Network Directory, the issuer information is returned alongside the SMART Health Card payload. 
 
-<<< TBD - explain what type of validation is performed >>>
-
 The SMART Health Card Verifier API accepts SMART Health Cards either encoded as a JSON Web Signature (JWS) or a numeric encoded JWS as defined in the [SMART Health Card specification](https://spec.smarthealth.cards/#creating-a-qr-code-or-a-set-of-qr-codes-from-a-health-card-jws), the encoding used when the SMART Health Card is represented as a QR code.
+
+Is addition to signature validation, the SMART Health Card verifier performs the following conformance checks:
+ - `nbf` is less than or equal to the current time (with nominal leeway to account for clock skew)
+ - `vc.type` is present and contains an array of strings
+ - `vc.credentialSubject.fhirVersion` is present and contains a string
+ - `vc.credentialSubject.fhirBundle` is present and contains an object
 
 ## Sample Requests and Response
 

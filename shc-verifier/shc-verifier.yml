@@ -58,7 +58,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
         '502':
-          description: Public key not found or invalid
+          description: Public key cannot be downloaded or it is invalid
           content:
             application/json:
               schema:
