@@ -96,31 +96,19 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SHCMultipleNumericInputSegment'
-    SMARTHealthCard:
+
+    SMARTHealthCardCredentialSubject:
       type: object
       required:
-        - iss
-        - nbf
-        - vc
+        - fhirVersion
+        - fhirBundle
       properties:
-        iss:
+        fhirVersion:
           type: string
-          format: uri
-          example: https://spec.smarthealth.cards/examples/issuer
-        nbf:
-          type: number
-          example: 1633360029.475
-        vc:
+          example: 4.0.1
+        fhirBundle:
           type: object
           example: {
-            "type": [
-                "https://smarthealth.cards#health-card",
-                "https://smarthealth.cards#immunization",
-                "https://smarthealth.cards#covid19"
-            ],
-            "credentialSubject": {
-                "fhirVersion": "4.0.1",
-                "fhirBundle": {
                     "resourceType": "Bundle",
                     "type": "collection",
                     "entry": [
@@ -196,8 +184,39 @@ components:
                         }
                     ]
                 }
-            }
-        }
+    SMARTHealthCardVC:
+      type: object
+      properties:
+        'type':
+          type: array
+          items:
+            type: string
+          example: [
+            "https://smarthealth.cards#health-card",
+            "https://smarthealth.cards#immunization",
+            "https://smarthealth.cards#covid19"
+        ]
+        credentialSubject:
+          $ref: '#/components/schemas/SMARTHealthCardCredentialSubject'
+      required:
+        - 'type'
+        - credentialSubject
+    SMARTHealthCard:
+      type: object
+      required:
+        - iss
+        - nbf
+        - vc
+      properties:
+        iss:
+          type: string
+          format: uri
+          example: https://spec.smarthealth.cards/examples/issuer
+        nbf:
+          type: number
+          example: 1633360029.475
+        vc:
+          $ref: '#/components/schemas/SMARTHealthCardVC'
     Issuer:
       type: object
       nullable: true
