@@ -44,6 +44,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Issuer'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
         '400':
           description: Invalid parameters
           content:
