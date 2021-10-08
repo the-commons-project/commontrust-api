@@ -10,12 +10,8 @@ info:
     url: 'https://mit-license.org/'
 
 servers:
-  - description: Development
-    url: https://api-dev.commontrustnetwork.org/v1/shc-verifier
-  - description: Test
-    url: https://api-test.commontrustnetwork.org/v1/shc-verifier
   - description: Production
-    url: https://api.commontrustnetwork.org/v1/shc-verifier
+    url: https://api.commontrustnetwork.org/shc/v1/verifier
 
 paths:
   /verifier:

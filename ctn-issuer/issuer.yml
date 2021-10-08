@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: ctn-issuer
-  description: CommonTrust Network Issuer API
+  description: CommonTrust Network Registry API
   version: 1.0.0
   contact:
     email: cloudops@thecommonsproject.org
@@ -10,12 +10,8 @@ info:
     url: 'https://mit-license.org/'
 
 servers:
-  - description: Development
-    url: https://api-dev.commontrustnetwork.org/v1/ctn-issuer
-  - description: Test
-    url: https://api-test.commontrustnetwork.org/v1/ctn-issuer
   - description: Production
-    url: https://api.commontrustnetwork.org/v1/ctn-issuer
+    url: https://api.commontrustnetwork.org/ctn/v1/issuer
 
 paths:
   /issuer:
