@@ -1,0 +1,84 @@
+{
+	"info": {
+		"name": "CommonTrust Network Registry API Postman Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "(PRODUCTION) GET VC Issuer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{x-api-key-production}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.commontrustnetwork.org/ctn/v1/issuer?system=smarthealthcard&identifier=https://apps.vdh.virginia.gov/credentials",
+					"protocol": "https",
+					"host": [
+						"api",
+						"commontrustnetwork",
+						"org"
+					],
+					"path": [
+						"ctn",
+						"v1",
+						"issuer"
+					],
+					"query": [
+                        {
+							"key": "system",
+							"value": "smarthealthcard"
+						},
+						{
+							"key": "identifier",
+							"value": "https://smarthealth.cards/examples/issuer"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(SANDBOX) GET VC Issuer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{x-api-key-sandbox}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api-test.commontrustnetwork.org/ctn/v1/issuer?system=smarthealthcard&identifier=https://smarthealth.cards/examples/issuer",
+					"protocol": "https",
+					"host": [
+						"api-test",
+						"commontrustnetwork",
+						"org"
+					],
+					"path": [
+						"ctn",
+						"v1",
+						"issuer"
+					],
+					"query": [
+						{
+							"key": "system",
+							"value": "smarthealthcard"
+						},
+						{
+							"key": "identifier",
+							"value": "https://smarthealth.cards/examples/issuer"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

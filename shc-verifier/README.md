@@ -136,3 +136,7 @@ Response:
 ## API Definition
 
 A more detailed API definition can be found in [`shc-verifier.yml`](shc-verifier.yml), including information about potential errors.
+
+## Postman Collection
+
+A Postman collection with sample queries is provided in this repo. To authenticate the requests to respective environments, populate a Postman environment with `x-api-key-sandbox` and `x-api-key-production` values, if available.
