@@ -1,10 +1,4 @@
-<img src="./ctn.png" 
-    alt="CommonTrust Network" 
-    title="CommonTrust Network" 
-	style="object-fit:cover;
-            width:500px;
-            height:80px;"
-/>
+![](./CTN_Logo_Horizontal.png)
 
 # CommonTrust Network Registry APIs
 

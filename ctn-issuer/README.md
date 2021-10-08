@@ -1,10 +1,4 @@
-<img src="../ctn.png" 
-    alt="CommonTrust Network" 
-    title="CommonTrust Network" 
-	style="object-fit:cover;
-            width:500px;
-            height:80px;"
-/>
+![](../CTN_Logo_Horizontal.png)
 
 # CommonTrust Network Issuer API
 The CommonTrust Network Registry API API allows organizations to query the CommonTrust Network Registry to look up information about whether the issuer of a SMART Health Card is a participant in the registry. 

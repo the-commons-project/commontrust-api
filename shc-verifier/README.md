@@ -1,10 +1,4 @@
-<img src="../ctn.png" 
-    alt="CommonTrust Network" 
-    title="CommonTrust Network" 
-	style="object-fit:cover;
-            width:500px;
-            height:80px;"
-/>
+![](../CTN_Logo_Horizontal.png)
 
 # SMART Health Card Verifier API
 The SMART Health Card Verifier API provides organizations an interface to check that a SMART Health Card is valid (i.e. not tampered with) and was issued by an issuer in the CommonTrust Network Registry. If the SMART Health Card passes validation, the payload of the SMART Health Card, containing the patient’s name, the vaccine’s CVX code, and the date of each dose, will be returned to the organization seeking to verify the credential. If the issuer of the SMART Health Card is registered in the CommonTrust Network Registry, the issuer information is returned alongside the SMART Health Card payload.
