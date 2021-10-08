@@ -12,6 +12,8 @@ info:
 servers:
   - description: Production
     url: https://api.commontrustnetwork.org/ctn/v1/issuer
+  - description: Test
+    url: https://api-test.commontrustnetwork.org/ctn/v1/issuer
 
 paths:
   /issuer:

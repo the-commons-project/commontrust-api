@@ -12,6 +12,8 @@ info:
 servers:
   - description: Production
     url: https://api.commontrustnetwork.org/shc/v1/verifier
+  - description: Test
+    url: https://api-test.commontrustnetwork.org/shc/v1/verifier
 
 paths:
   /verifier:
