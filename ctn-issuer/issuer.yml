@@ -116,7 +116,7 @@ paths:
       x-amazon-apigateway-integration:
         type: aws_proxy
         uri: |
-          arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:${AWS::Partition}:lambda:${AWS::Region}:${AWS::AccountId}:function:ctn-issuer-lookup:dev/invocations
+          arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:${AWS::Partition}:lambda:${AWS::Region}:${AWS::AccountId}:function:ctn-issuer-lookup:live/invocations
         httpMethod: POST
         contentHandling: CONVERT_TO_TEXT
         passthroughBehavior: when_no_match
