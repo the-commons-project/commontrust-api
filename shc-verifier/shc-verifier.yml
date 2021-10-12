@@ -10,13 +10,48 @@ info:
     url: 'https://mit-license.org/'
 
 servers:
-  - description: Production
-    url: https://api.commontrustnetwork.org/shc/v1
-  - description: Test
-    url: https://api-test.commontrustnetwork.org/shc/v1
+  - description: Development
+    url: https://api-dev.commontrustnetwork.org/shc/v1
 
 paths:
   /verifier:
+    options:
+      summary: CORS support
+      description: |
+        Enable CORS by returning correct headers
+      tags:
+      - CORS
+      responses:
+        200:
+          description: Default response for CORS method
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+          content: {}
+      x-amazon-apigateway-integration:
+        type: mock
+        requestTemplates:
+          application/json: |
+            {
+              "statusCode" : 200
+            }
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Api-Key'''
+              method.response.header.Access-Control-Allow-Methods: '''*'''
+              method.response.header.Access-Control-Allow-Origin: '''*'''
+            responseTemplates:
+              application/json: |
+                {}
     post:
       summary: returns verification response
       description: |
@@ -38,7 +73,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidationResponse'
-                  
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
         '400':
           description: Invalid parameters or the SHC is invalid
           content:
@@ -61,6 +105,28 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        uri: |
+          arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:${AWS::Partition}:lambda:${AWS::Region}:${AWS::AccountId}:function:ctn-shc-verifier:live/invocations
+        httpMethod: POST
+        contentHandling: CONVERT_TO_TEXT
+        passthroughBehavior: when_no_match
+        requestTemplates:
+          application/json: |
+            {
+              "statusCode" : 200
+            }
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Api-Key'''
+              method.response.header.Access-Control-Allow-Methods: '''*'''
+              method.response.header.Access-Control-Allow-Origin: '''*'''
+            responseTemplates:
+              application/json: |
+                {}
 
 components:
   securitySchemes:
