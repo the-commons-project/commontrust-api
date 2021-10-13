@@ -10,8 +10,8 @@ info:
     url: 'https://mit-license.org/'
 
 servers:
-  - description: Development
-    url: https://api-dev.commontrustnetwork.org/shc/v1
+  - description: Replace api_base_url with server base URL
+    url: ${api_base_url}/shc/v1
 
 paths:
   /verifier:

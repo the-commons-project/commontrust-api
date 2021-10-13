@@ -10,10 +10,8 @@ info:
     url: 'https://mit-license.org/'
 
 servers:
-  - description: Production
-    url: https://api.commontrustnetwork.org/ctn/v1
-  - description: Test
-    url: https://api-test.commontrustnetwork.org/ctn/v1
+  - description: Replace api_base_url with server base URL
+    url: ${api_base_url}/ctn/v1
 
 paths:
   /issuer:
