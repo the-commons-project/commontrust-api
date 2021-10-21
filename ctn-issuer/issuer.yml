@@ -154,10 +154,6 @@ components:
         name:
           type: string
           example: Kenney Laboratories
-        logo_uri:
-          type: string
-          format: uri
-          example: https://kenneylabs.com/logo.png
         environment:
           type: string
           enum: [PROD, NONPROD]
