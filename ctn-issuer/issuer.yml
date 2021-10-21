@@ -11,7 +11,7 @@ info:
 
 servers:
   - description: Replace api_base_url with server base URL
-    url: ${api_base_url}/ctn/v1
+    url: ${api_endpoint_url}
 
 paths:
   /issuer:
