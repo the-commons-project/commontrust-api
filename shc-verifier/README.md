@@ -140,3 +140,7 @@ A more detailed API definition can be found in [`shc-verifier.yml`](shc-verifier
 ## Postman Collection
 
 A Postman collection with sample queries is provided in this repo. To authenticate the requests to respective environments, populate a Postman environment with `x-api-key-sandbox` and `x-api-key-production` values, if available.
+
+## Testing Considerations
+
+The test environment only supports a limited number of known issuers of sample SMART Health Cards, including `https://spec.smarthealth.cards/examples/issuer`. Example SMART Health Cards issued by `https://spec.smarthealth.cards/examples/issuer` can be found [here](https://spec.smarthealth.cards/examples/). If you need any additional issuers of sample SMART Health Cards added to this list in order to support your testing, please reach out.
